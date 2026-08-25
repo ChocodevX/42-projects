@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/25 21:32:47 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/25 22:21:05 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/25 22:21:05 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int ft_isprint(char* s){
-    int i = 0;
-    while(s[i] != '\0'){
-        if ( (s[i] >= 0 && s[i]<= 32) || (s[i] == 127) ){
-            return 0;
-        }
+
+size_t ft_strlcat(char *dst, const char *src, size_t size){
+    size_t i;
+    size_t j;
+
+    while (src[i] != '\0'){
+        
         i++;
     }
-    return 1;
+}
+
+int main(){
+
 }

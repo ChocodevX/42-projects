@@ -1,20 +1,26 @@
-// #include <stdio.h>
-// #include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/25 21:32:47 by ponsumri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_isalnum(char* s){
-    int i = 0;
-    while (s[i] != '\0') {
-        if ((s[i] >= 48 && s[i] <= 57) || (s[i] >= 65 && s[i] <= 90 ) || (s[i] >= 97 && s[i] <= 122)) {
+#include "libft.h"
 
-        }else {
-            return 0;
-        }
-        i++;
-    }
-    return 1;
+int	ft_isalnum(int c)
+{
+	int i = 0;
+	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }
-
-
-// int main(){
-//     printf("%i",ft_isalnum("12345"));
-// }

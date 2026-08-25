@@ -1,19 +1,32 @@
-// #include <stdio.h>
-// #include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/25 21:32:47 by ponsumri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_isalpha(char* s){
-    int i = 0;
-    while (s[i] != '\0'){
-        if ((s[i] >= 65 && s[i] <= 90 ) || (s[i] >= 97 && s[i] <= 122)){
-        }else{
-            return 0;
-        }
-        i++;
-    }
-    return 1;
+#include "libft.h"
+
+int	ft_isalpha(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if ((s[i] >= 65 && s[i] <= 90) || (s[i] >= 97 && s[i] <= 122))
+		{
+		}
+		else
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }
-
-
-// int main(){
-//     printf("%i",ft_isalpha("HIHiiAIIS"));
-// }

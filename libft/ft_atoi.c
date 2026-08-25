@@ -1,5 +1,16 @@
-// #include <stdio.h>
-// #include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/25 21:32:47 by ponsumri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int ft_atoi(const char *nptr){
     int i = 0;
@@ -20,7 +31,3 @@ int ft_atoi(const char *nptr){
     }
     return j * neg;
 }
-
-// int main(){
-//     printf("%i",ft_atoi("-123"));
-// }

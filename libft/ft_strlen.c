@@ -1,5 +1,16 @@
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/25 21:32:47 by ponsumri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int ft_strlen ( const char * str ){
     int i = 0;
@@ -7,8 +18,4 @@ int ft_strlen ( const char * str ){
         i++;
     }
     return i;
-}
-
-int main() {
-    printf("%i",ft_strlen("hello"));
 }
