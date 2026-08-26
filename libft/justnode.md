@@ -4,18 +4,18 @@
 • isascii (clear)
 • isprint (clear)
 • strlen  (clear)
-• memset
-• bzero
-• memcpy
-• memmove
+• memset  (clear)
+• bzero   (clear)
+• memcpy  (clear)
 • strlcpy (clear)
 • strlcat (clear)
 • toupper (clear)
 • tolower (clear)
+• atoi    (clear)
 • strchr
 • strrchr
 • strncmp
 • memchr
 • memcmp
 • strnstr
-• atoi    (clear)
+• memmove
