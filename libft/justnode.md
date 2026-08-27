@@ -15,7 +15,7 @@
 • strchr
 • strrchr
 • strncmp
-• memchr
-• memcmp
 • strnstr
 • memmove
+• memchr
+• memcmp
