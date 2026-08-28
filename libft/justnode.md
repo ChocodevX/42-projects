@@ -19,3 +19,5 @@
 • memmove (clear)
 • memchr  (clear)
 • memcmp  (clear)
+• calloc  (clear)
+• strdup  (clear)
