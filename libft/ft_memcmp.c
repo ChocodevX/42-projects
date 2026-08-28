@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 23:00:52 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/28 12:46:56 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/28 15:38:40 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/28 15:40:43 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-void *ft_memcpy(void *dest, const void *src, size_t n)
+int ft_memcmp(const void *s1, const void *s2, size_t n)
 {
+    const unsigned char *p1 = s1;
+    const unsigned char *p2 = s2;
     size_t i = 0;
-    const unsigned char *sr = src;
-    unsigned char *dst = dest;
-
     while (i < n)
     {
-        dst[i] = sr[i];
+        if (p1[i] != p2[i])
+        {
+            return p1[i] - p2[i];
+        }
         i++;
     }
-    return dest;
 }

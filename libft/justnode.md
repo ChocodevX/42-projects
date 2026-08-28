@@ -15,7 +15,7 @@
 • strchr  (clear)
 • strrchr (clear)
 • strncmp (clear)
-• strnstr 
-• memmove
-• memchr
-• memcmp
+• strnstr (clear)
+• memmove (clear)
+• memchr  (clear)
+• memcmp  (clear)

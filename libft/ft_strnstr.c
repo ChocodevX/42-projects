@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 19:52:38 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/27 20:43:28 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/28 11:35:17 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
     
     while (len >= n_count && *haystack != '\0')
     {
+        i = 0;
         while (i < n_count && haystack[i] == needle[i])
         {
             i++;
@@ -51,7 +52,7 @@ int main()
     const char *smallstring = "Bar";
     char *ptr;
 
-    ptr = ft_strnstr(largestring, smallstring, 4);
+    ptr = ft_strnstr(largestring, smallstring, 10);
 
     printf("%s", ptr);
 }

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 23:00:52 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/28 12:46:56 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/28 15:25:16 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/28 15:39:15 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-void *ft_memcpy(void *dest, const void *src, size_t n)
-{
+void *ft_memchr(const void *ptr, int ch, size_t count) {
+    const unsigned char *p = (const unsigned char *)ptr;
+    unsigned char tar = (unsigned char)ch;
     size_t i = 0;
-    const unsigned char *sr = src;
-    unsigned char *dst = dest;
-
-    while (i < n)
-    {
-        dst[i] = sr[i];
+    while (i < count) {
+        if (p[i] == tar){
+            return (void *)(p + i);
+        }
         i++;
     }
-    return dest;
+    return NULL;
 }
