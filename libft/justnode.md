@@ -12,10 +12,10 @@
 • toupper (clear)
 • tolower (clear)
 • atoi    (clear)
-• strchr
-• strrchr
-• strncmp
-• strnstr
+• strchr  (clear)
+• strrchr (clear)
+• strncmp (clear)
+• strnstr 
 • memmove
 • memchr
 • memcmp

@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 14:48:32 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/27 15:56:50 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/27 19:37:35 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char *ft_strchr(const char *s, int c){
     char cc = c;
 
     while (*s != '\0'){
-        if (*s == c){
+        if (*s == c) 
             return (char *)s;
-        }
+            
         s++;
     }
 
