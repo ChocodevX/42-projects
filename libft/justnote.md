@@ -23,17 +23,18 @@
 • strdup  (clear)
 • ft_substr (clear)
 • ft_strjoin (clear)
-• ft_strtrim    (clear)
-• ft_split
-• ft_itoa
-• ft_strmapi
-• ft_striteri
-• ft_putchar_fd
-• ft_putstr_fd
-• ft_putendl_fd
-• ft_putnbr_fd
-• ft_lstnew
-• ft_lstadd_front
+• ft_strtrim (clear)
+• ft_splitv (clear)
+• ft_itoa   (clear)
+• ft_strmapi (clear)
+• ft_striteri (clear)
+• ft_putchar_fd (clear)
+• ft_putstr_fd (clear)
+• ft_putendl_fd (clear)
+• ft_putnbr_fd (clear)
+### linked list 
+• ft_lstnew (clear)
+• ft_lstadd_front (clear)
 • ft_lstsize
 • ft_lstlast
 • ft_lstadd_back
@@ -41,5 +42,3 @@
 • ft_lstclear
 • ft_lstiter
 • ft_lstmap
-• 
-• 

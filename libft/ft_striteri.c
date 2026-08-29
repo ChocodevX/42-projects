@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 10:30:25 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/29 11:56:25 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/29 12:00:02 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int ft_atoi(const char *nptr){
-    int i = 0;
-    int neg = 1;
-    int j = 0;
+void ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+    size_t len;
+    size_t i;
 
-    while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-        i++;
-    if (nptr[i] == '+' || nptr[i] == '-') {
-        if (nptr[i] == '-')
-            neg = -1;
+    if (!s || !f)
+        return ;
+    len = ft_strlen(s);
+    i = 0;
+    while (i < len)
+    {
+        f((unsigned int)i, &s[i]);
         i++;
     }
-    while (nptr[i] >= '0' && nptr[i] <= '9') {
-        j = j * 10 + (nptr[i] - '0');
-        i++;
-    }
-    return j * neg;
+}
+
+int main(){
+    
 }
