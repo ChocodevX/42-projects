@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/27 14:48:32 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 17:23:08 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/29 15:51:18 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/29 16:57:54 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
+t_list *ft_lstlast(t_list *lst){
 
-char *ft_strchr(const char *s, int c){
-    char cc = c;
+    if (!lst)
+        return NULL;
 
-    while (*s != '\0'){
-        if (*s == cc) 
-            return (char *)s;
-            
-        s++;
+    while(lst->next){
+        lst = lst->next;
     }
-
-    if (cc == '\0'){
-        return (char *)s;
-    }
-
-    return NULL;
+    
+    return lst;
 }
 
 int main(){
-    char str[] = "helflo";
-
-    char *ptr = ft_strchr(str,'f');
-
-    printf("%s",ptr);
+    
 }

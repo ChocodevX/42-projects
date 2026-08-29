@@ -35,9 +35,9 @@
 ### linked list 
 • ft_lstnew (clear)
 • ft_lstadd_front (clear)
-• ft_lstsize
-• ft_lstlast
-• ft_lstadd_back
+• ft_lstsize (clear)
+• ft_lstlast (clear)
+• ft_lstadd_back 
 • ft_lstdelone
 • ft_lstclear
 • ft_lstiter
