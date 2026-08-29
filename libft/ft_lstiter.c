@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/28 18:35:12 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 18:42:33 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/29 22:40:32 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/29 23:25:48 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void* calloc(size_t num, size_t size){
-    if (num && size > (size_t) -1 / num){
-        return NULL;
+void ft_lstiter(t_list *lst, void (*f)(void *)){
+    if (!lst){
+        return;
     }
-    size_t byte = num * size;
-    void *ptr = malloc(byte);
-    if (ptr != NULL){
-        ft_memset(ptr,0,byte);
+
+    while (lst){
+        f(lst->content);
+        lst = lst->next;
     }
-    return ptr;
+}
+
+int main(){
+    
 }

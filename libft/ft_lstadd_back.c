@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/28 18:35:12 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 18:42:33 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/29 17:44:51 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/08/29 18:15:02 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void* calloc(size_t num, size_t size){
-    if (num && size > (size_t) -1 / num){
-        return NULL;
+void ft_lstadd_back(t_list **lst, t_list *new){
+    t_list *tmp;
+    if (!*lst || !new){
+        return;
     }
-    size_t byte = num * size;
-    void *ptr = malloc(byte);
-    if (ptr != NULL){
-        ft_memset(ptr,0,byte);
+    if (*lst ==  NULL){
+        *lst = new;
+        return ;
     }
-    return ptr;
+    tmp = *lst;
+    while (tmp->next){
+        tmp = tmp->next;
+    }
+    tmp->next = new;
+}
+
+int main(){
+    
 }

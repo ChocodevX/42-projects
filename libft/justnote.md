@@ -37,8 +37,8 @@
 • ft_lstadd_front (clear)
 • ft_lstsize (clear)
 • ft_lstlast (clear)
-• ft_lstadd_back 
-• ft_lstdelone
-• ft_lstclear
-• ft_lstiter
+• ft_lstadd_back (clear)
+• ft_lstdelone  (clear)
+• ft_lstclear   (clear)
+• ft_lstiter    (clear)
 • ft_lstmap

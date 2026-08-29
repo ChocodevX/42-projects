@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 17:39:14 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/28 12:04:25 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/29 18:04:12 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int strncmp( const char* lhs, const char* rhs, size_t count ){
         count--;
     }
 
-    return *(unsigned char*)lhs - *(unsigned char*)rhs;
+    return (w) - ((unsigned char*)rhs);
 }
 
 int main(){
