@@ -6,35 +6,24 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 14:48:32 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 17:23:08 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:37:52 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
+char	*ft_strchr(const char *s, int c)
+{
+	char	cc;
 
-char *ft_strchr(const char *s, int c){
-    char cc = c;
-
-    while (*s != '\0'){
-        if (*s == cc) 
-            return (char *)s;
-            
-        s++;
-    }
-
-    if (cc == '\0'){
-        return (char *)s;
-    }
-
-    return NULL;
-}
-
-int main(){
-    char str[] = "helflo";
-
-    char *ptr = ft_strchr(str,'f');
-
-    printf("%s",ptr);
+	cc = c;
+	while (*s != '\0')
+	{
+		if (*s == cc)
+			return ((char *)s);
+		s++;
+	}
+	if (cc == '\0')
+		return ((char *)s);
+	return (NULL);
 }

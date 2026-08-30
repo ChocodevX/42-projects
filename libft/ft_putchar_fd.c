@@ -6,13 +6,13 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 12:00:29 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 12:16:27 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:37:32 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-void ft_putchar_fd(char c, int fd){
-    write(fd,&c,1);
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
 }

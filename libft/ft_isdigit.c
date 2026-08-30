@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,16 @@
 
 #include "libft.h"
 
-int ft_isdigit(char* s){
-    int i = 0;
-    while (s[i] != '\0'){
-        if (s[i] >= 48 && s[i] <= 57){
-        }else {
-            return 0;
-        }
-        i++;
-    }
-    return 1;
+int	ft_isdigit(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (!(s[i] >= 48 && s[i] <= 57))
+			return (0);
+		i++;
+	}
+	return (1);
 }

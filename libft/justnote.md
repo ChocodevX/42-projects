@@ -41,4 +41,4 @@
 • ft_lstdelone  (clear)
 • ft_lstclear   (clear)
 • ft_lstiter    (clear)
-• ft_lstmap
+• ft_lstmap     (clear)

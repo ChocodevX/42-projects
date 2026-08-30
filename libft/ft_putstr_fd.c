@@ -6,11 +6,13 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 12:20:03 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 14:29:21 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:37:45 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putstr_fd(char *s, int fd)
+#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
 {
-    write(fd, s, ft_strlen(s));
+	write(fd, s, ft_strlen(s));
 }

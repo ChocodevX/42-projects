@@ -6,14 +6,13 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 08:15:53 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 09:08:17 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:37:47 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	int	i;
 	int	in_word;
@@ -34,7 +33,7 @@ int	count_words(char const *s, char c)
 	return (i);
 }
 
-char	*get_word(char const *s, size_t *j, char c)
+static char	*get_word(char const *s, size_t *j, char c)
 {
 	size_t	start;
 	size_t	len;
@@ -82,8 +81,4 @@ char	**ft_split(char const *s, char c)
 	}
 	ans[k] = NULL;
 	return (ans);
-}
-
-int main(){
-    
 }

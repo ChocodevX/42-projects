@@ -6,63 +6,33 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 22:21:05 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/25 22:21:05 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:38:04 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <libft.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t size){
-    size_t i = 0;
-    size_t j = 0;
-    size_t srclen = 0;
-    size_t dstlen = 0;
-    size_t k = 0;
-
-
-    while (src[i] != '\0') {
-        i++;
-    }
-
-    srclen = i;
-
-    while (dst[j] != '\0'){
-        j++;
-    }
-    dstlen = j;
-    
-    if (size == 0){
-        return (srclen + dstlen);
-    }
-
-    i = 0;
-    k = dstlen;
-    while(src[i] != '\0' && k < size - 1){
-        dst[j] = src[i];
-        i++;
-        j++;
-        k++;
-    }
-
-    if (k < size){
-        dst[j] = '\0';
-    }
-
-    if (dstlen > size){
-        return (size + srclen);
-    }   
-    return (srclen + dstlen);
-}
-
-int main(void)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char	dst[20] = "hi";
-	char	*src = "hello";
-    size_t size = 7;
+	size_t	i;
+	size_t	j;
+	size_t	srclen;
+	size_t	dstlen;
 
-    // ft_strlcat(dst, src, sizeof(dst));
-	printf("%zu\n", ft_strlcat(dst, src, size));
-	printf("%s\n", dst);
+	srclen = ft_strlen(src);
+	dstlen = ft_strlen(dst);
+	if (size == 0)
+		return (srclen + dstlen);
+	if (dstlen > size)
+		return (size + srclen);
+	i = 0;
+	j = dstlen;
+	while (src[i] != '\0' && j < size - 1)
+	{
+		dst[j] = src[i];
+		i++;
+		j++;
+	}
+	dst[j] = '\0';
+	return (srclen + dstlen);
 }

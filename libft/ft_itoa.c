@@ -12,22 +12,27 @@
 
 #include "libft.h"
 
-int ft_itoa(const char *nptr){
-    int i = 0;
-    int j = 0;
-    int neg = 1;
+int	ft_itoa(const char *nptr)
+{
+	int	i;
+	int	j;
+	int	neg;
 
-    while(nptr[i] != '\0'){
-        if ((nptr[i] >= 48 && nptr[i] <= 57) || nptr[i] == 45) {
-            if (nptr[i] == 45 && neg == 1){
-                neg = -1;
-            }else if (nptr[i] == 45 && neg == -1) {
-                neg = 1;
-            }else {
-                j = j * 10 + (nptr[i] - '0'); // fixed
-            }
-        }
-        i++;
-    }
-    return j * neg;
+	i = 0;
+	j = 0;
+	neg = 1;
+	while (nptr[i] != '\0')
+	{
+		if ((nptr[i] >= 48 && nptr[i] <= 57) || nptr[i] == 45)
+		{
+			if (nptr[i] == 45 && neg == 1)
+				neg = -1;
+			else if (nptr[i] == 45 && neg == -1)
+				neg = 1;
+			else
+				j = j * 10 + (nptr[i] - '0');
+		}
+		i++;
+	}
+	return (j * neg);
 }

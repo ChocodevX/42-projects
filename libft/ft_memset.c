@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fl_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/26 22:05:39 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/26 22:05:39 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:37:30 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <libft.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-void *memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
-    size_t i = 0;
-    unsigned char *ptr = s;
+	size_t			i;
+	unsigned char	*ptr;
 
-    while (i < n)
-    {
-        ptr[i] = c;
-        i++;
-    }
-    return s;
+	i = 0;
+	ptr = s;
+	while (i < n)
+	{
+		ptr[i] = c;
+		i++;
+	}
+	return (s);
 }
