@@ -6,22 +6,16 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/30 11:42:17 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/30 14:25:01 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(char *s)
+int	ft_isascii(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (!(s[i] >= 0 && s[i] <= 115))
-			return (0);
-		i++;
-	}
-	return (1);
+	if ((c >= 0 && c <= 127))
+		return (1);
+		
+	return (0);
 }

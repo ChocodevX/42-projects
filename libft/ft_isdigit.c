@@ -6,22 +6,16 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/25 21:32:47 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/08/30 14:20:42 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(char *s)
+int	ft_isdigit(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (!(s[i] >= 48 && s[i] <= 57))
-			return (0);
-		i++;
-	}
+	if (!(c >= 48 && c <= 57))
+		return (0);
+		
 	return (1);
 }
