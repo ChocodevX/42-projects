@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 19:14:29 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 19:21:06 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/02 15:49:26 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		free((*lst));
 		*lst = next;
 	}
+	*lst = NULL;
 }

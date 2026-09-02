@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 23:26:30 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/30 13:41:56 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/02 14:21:46 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		new_node = ft_lstnew(new_content);
 		if (!new_node)
 		{
+			del(new_content);
 			ft_lstclear(&new_list, del);
 			return (NULL);
 		}

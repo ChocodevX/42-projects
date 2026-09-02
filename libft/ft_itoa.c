@@ -6,33 +6,50 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/29 10:29:57 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/02 15:25:35 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_itoa(const char *nptr)
+static size_t	num_len(int n)
 {
-	int	i;
-	int	j;
-	int	neg;
+	size_t	len;
 
-	i = 0;
-	j = 0;
-	neg = 1;
-	while (nptr[i] != '\0')
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n != 0)
 	{
-		if ((nptr[i] >= 48 && nptr[i] <= 57) || nptr[i] == 45)
-		{
-			if (nptr[i] == 45 && neg == 1)
-				neg = -1;
-			else if (nptr[i] == 45 && neg == -1)
-				neg = 1;
-			else
-				j = j * 10 + (nptr[i] - '0');
-		}
-		i++;
+		n /= 10;
+		len++;
 	}
-	return (j * neg);
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	size_t	len;
+	long	nb;
+
+	nb = n;
+	len = num_len(n);
+	str = malloc(len + 1);
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	if (nb < 0)
+	{
+		str[0] = '-';
+		nb = -nb;
+	}
+	if (nb == 0)
+		str[0] = '0';
+	while (nb > 0)
+	{
+		str[--len] = (nb % 10) + '0';
+		nb /= 10;
+	}
+	return (str);
 }

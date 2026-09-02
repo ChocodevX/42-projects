@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 08:15:53 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/08/30 15:27:25 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/02 14:40:00 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,19 @@ static char	*get_word(char const *s, size_t *j, char c)
 	return (word);
 }
 
+static void	free_all(char **ans, size_t k)
+{
+	size_t	m;
+
+	m = 0;
+	while (m < k)
+	{
+		free(ans[m]);
+		m++;
+	}
+	free(ans);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**ans;
@@ -66,6 +79,8 @@ char	**ft_split(char const *s, char c)
 	size_t	k;
 	int		words;
 
+	if (s == NULL)
+		return (NULL);
 	words = count_words(s, c);
 	ans = malloc((words + 1) * sizeof(char *));
 	if (!ans)
@@ -76,7 +91,10 @@ char	**ft_split(char const *s, char c)
 	{
 		ans[k] = get_word(s, &j, c);
 		if (!ans[k])
+		{
+			free_all(ans, k);
 			return (NULL);
+		}
 		k++;
 	}
 	ans[k] = NULL;
