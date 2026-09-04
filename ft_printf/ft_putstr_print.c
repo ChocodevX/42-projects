@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 23:00:52 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/04 15:52:18 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/29 12:20:03 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/09/03 22:40:25 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_putstr_print(char *s, int *total)
 {
-	size_t				i;
-	const unsigned char	*sr;
-	unsigned char		*dst;
-
-	i = 0;
-	sr = src;
-	dst = dest;
-	while (i < n)
-	{
-		dst[i] = sr[i];
-		i++;
-	}
-	return (dest);
+	if (!s)
+		s = "(null)";
+	ft_out(s, ft_strlen(s), total);
 }

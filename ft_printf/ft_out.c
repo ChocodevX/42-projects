@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_out.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 23:00:52 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/04 15:52:18 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/09/04 11:45:00 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/09/04 11:45:00 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_out(char *s, size_t len, int *total)
 {
-	size_t				i;
-	const unsigned char	*sr;
-	unsigned char		*dst;
-
-	i = 0;
-	sr = src;
-	dst = dest;
-	while (i < n)
+	if (*total < 0)
+		return (-1);
+	if (write(1, s, len) < 0)
 	{
-		dst[i] = sr[i];
-		i++;
+		*total = -1;
+		return (-1);
 	}
-	return (dest);
+	*total += (int)len;
+	return (0);
 }

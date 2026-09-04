@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/26 23:00:52 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/04 15:52:18 by ponsumri         ###   ########.fr       */
+/*   Created: 2026/08/25 21:32:47 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/09/03 14:41:18 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+size_t	ft_strlen(const char *s)
 {
-	size_t				i;
-	const unsigned char	*sr;
-	unsigned char		*dst;
+	size_t	i;
 
 	i = 0;
-	sr = src;
-	dst = dest;
-	while (i < n)
-	{
-		dst[i] = sr[i];
+	while (s[i] != '\0')
 		i++;
-	}
-	return (dest);
+	return (i);
 }
