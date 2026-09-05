@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 17:31:32 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/05 09:19:53 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/05 17:25:48 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,13 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format == '%' && *(format + 1))
+		if (*format == '%')
 		{
+			if (!*(format + 1))
+			{
+				total = -1;
+				break ;
+			}
 			format++;
 			ft_format(*format, &args, &total);
 		}
@@ -55,13 +60,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (total);
 }
-
-// int	main(void)
-// {
-// 	int	ret;
-
-// 	ret = ft_printf("Character: %c\n", 'A');
-// 	ft_printf("Returned: %d\n", ret);
-// 	printf("%shello\n");
-// 	return (0);
-// }
