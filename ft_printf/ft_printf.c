@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 17:31:32 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/04 22:04:23 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/05 09:19:53 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,29 +56,12 @@ int	ft_printf(const char *format, ...)
 	return (total);
 }
 
-int	main(void)
-{
-	int	ret;
+// int	main(void)
+// {
+// 	int	ret;
 
-	ret = ft_printf("Character: %c\n", 'A');
-	ft_printf("Returned: %d\n", ret);
-	printf("%shello\n");
-	// ret = ft_printf("String: %s\n", "Hello");
-	// ft_printf("Returned: %d\n", ret);
-	// ret = ft_printf("Pointer: %p\n", (void *)1234);
-	// ft_printf("Returned: %d\n", ret);
-	// ret = ft_printf("Decimal: %d\n", 42);
-	// ft_printf("Returned: %d\n", ret);
-	// ret = ft_printf("Integer: %i\n", -100);
-	// ft_printf("Returned: %d\n", ret);
-	// ret = ft_printf("Unsigned: %u\n", 4294967295U);
-	// ft_printf("Returned: %d\n", ret);
-	// ret = ft_printf("Hex lower: %x\n", 255);
-	// ft_printf("Returned: %d\n", ret);
-	// ret = ft_printf("Hex upper: %X\n", 255);
-	// ft_printf("Returned: %d\n", ret);
-	// ret = ft_printf("Percent: %%\n");
-	// ft_printf("Returned: %d\n", ret);
-	return (0);
-}
-
+// 	ret = ft_printf("Character: %c\n", 'A');
+// 	ft_printf("Returned: %d\n", ret);
+// 	printf("%shello\n");
+// 	return (0);
+// }
