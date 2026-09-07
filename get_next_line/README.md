@@ -37,5 +37,52 @@ for (int i = 0; i < 1000000; i++) {
 fclose(fp);
 
 
+why ssize_t bc its signed and we can hear kernel error signal.
+int fd = -5;  // garbage or already-closed fd
+read(fd, buf, size);  // returns -1
+
+# Problems
+
+
 # Resources
 https://medium.com/@leoyeh.me/understanding-ring-0-to-ring-3-the-hidden-layers-of-virtualization-d10e0fe5a798
+
+# Pseudo code
+function get_next_line(fd):
+    if fd < 0 or BUFFER_SIZE <= 0 or read fails:
+        return NULL
+
+    static leftover[fd]   // persists between calls, one per fd
+
+    loop:
+        if leftover contains '\n':
+            break out of loop, go to extraction
+
+        bytes_read = read(fd, tmp_buffer, BUFFER_SIZE)
+
+        if bytes_read == 0:
+            // EOF reached
+            break out of loop, go to extraction
+        if bytes_read < 0:
+            free everything, return NULL
+
+        tmp_buffer[bytes_read] = '\0'
+        leftover = join(leftover, tmp_buffer)   // append new chunk
+
+    // extraction phase
+    if leftover is empty:
+        return NULL   // nothing left at all
+
+    if leftover contains '\n':
+        line = substring from start up to and including '\n'
+        leftover = substring after '\n'   // save remainder for next call
+    else:
+        // EOF hit, no newline, but leftover has content
+        line = leftover
+        leftover = empty
+
+    return line
+
+
+# Define Value
+buffer_size = Size for the buffer that we gonna use.
