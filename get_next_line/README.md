@@ -5,7 +5,7 @@ _This project has been created as part of the 42 curriculum by ponsumri_
 
 # Explaination
 ## Pls Read i Do its with my self ❤︎
-fopen 
+fopen wr b 
 
 Three buffering modes in setvbuf.
 _IONBF  -> no buffer, every stdio call = syscall immediately
@@ -41,11 +41,13 @@ why ssize_t bc its signed and we can hear kernel error signal.
 int fd = -5;  // garbage or already-closed fd
 read(fd, buf, size);  // returns -1
 
+why we dont need to use sizeof(char) here bc the bucket = malloc(oldlen + newlen + 1); is same as bucket = malloc((oldlen + newlen)(sizeof(char)) + 1)); 
+
 # Problems
 
 
 # Resources
-https://medium.com/@leoyeh.me/understanding-ring-0-to-ring-3-the-hidden-layers-of-virtualization-d10e0fe5a798
+https://medium.com/@leoyeh.me/  understanding-ring-0-to-ring-3-the-hidden-layers-of-virtualization-d10e0fe5a798
 
 # Pseudo code
 function get_next_line(fd):
@@ -84,5 +86,10 @@ function get_next_line(fd):
     return line
 
 
+# Variable
+finish_reading_count = a counter for value that we already read. we gonna use this likes index dst[i]; if its error its gonna be -1.
+dst = destination buffer, gets filled with actual bytes/content read from file. This is where the real data lands (e.g., "AAA" characters themselves).
+
 # Define Value
 buffer_size = Size for the buffer that we gonna use.
+FILE = struct type defined in stdio.h, represents opened stream (higher-level wrapper around a file, used with fopen/fread/fgets/fprintf etc, from C standard library)
