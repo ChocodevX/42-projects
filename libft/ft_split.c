@@ -6,7 +6,7 @@
 /*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 08:15:53 by ponsumri          #+#    #+#             */
-/*   Updated: 2026/09/02 14:40:00 by ponsumri         ###   ########.fr       */
+/*   Updated: 2026/09/12 11:50:13 by ponsumri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	words = count_words(s, c);
-	ans = malloc((words + 1) * sizeof(char *));
+	ans = kb((words + 1) * sizeof(char *));
 	if (!ans)
 		return (NULL);
 	j = 0;

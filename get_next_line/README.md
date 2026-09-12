@@ -50,46 +50,51 @@ why we dont need to use sizeof(char) here bc the bucket = malloc(oldlen + newlen
 https://medium.com/@leoyeh.me/  understanding-ring-0-to-ring-3-the-hidden-layers-of-virtualization-d10e0fe5a798
 
 # Pseudo code
-function get_next_line(fd):
-    if fd < 0 or BUFFER_SIZE <= 0 or read fails:
-        return NULL
-
-    static leftover[fd]   // persists between calls, one per fd
-
-    loop:
-        if leftover contains '\n':
-            break out of loop, go to extraction
-
-        bytes_read = read(fd, tmp_buffer, BUFFER_SIZE)
-
-        if bytes_read == 0:
-            // EOF reached
-            break out of loop, go to extraction
-        if bytes_read < 0:
-            free everything, return NULL
-
-        tmp_buffer[bytes_read] = '\0'
-        leftover = join(leftover, tmp_buffer)   // append new chunk
-
-    // extraction phase
-    if leftover is empty:
-        return NULL   // nothing left at all
-
-    if leftover contains '\n':
-        line = substring from start up to and including '\n'
-        leftover = substring after '\n'   // save remainder for next call
-    else:
-        // EOF hit, no newline, but leftover has content
-        line = leftover
-        leftover = empty
-
-    return line
 
 
 # Variable
-finish_reading_count = a counter for value that we already read. we gonna use this likes index dst[i]; if its error its gonna be -1.
-dst = destination buffer, gets filled with actual bytes/content read from file. This is where the real data lands (e.g., "AAA" characters themselves).
 
 # Define Value
-buffer_size = Size for the buffer that we gonna use.
-FILE = struct type defined in stdio.h, represents opened stream (higher-level wrapper around a file, used with fopen/fread/fgets/fprintf etc, from C standard library)
+
+
+static reset everytime restart has default value
+
+ulimit -n 1024
+
+
+# Header Explaination
+
+<!-- #ifndef GET_NEXT_LINE_H
+    # define GET_NEXT_LINE_H
+    # include <stdio.h>
+    # include <stdlib.h>
+    # include <unistd.h>
+    # ifndef BUFFER_SIZE
+        # define BUFFER_SIZE 42
+    # endif
+    # define MAX_FD 1024
+
+    typedef struct s_gnl_list
+    {
+        int fd; 1 byte but bc mem padding = 4
+        char *buf; = 8
+        struct s_gnl_list *next; = 8
+    }   t_gnl_list;
+
+    0  1  2  3  | 4  5  6  7  | 8  9  10 11 | 12 13 14 15 | 16 17 18 19 | 20 21 22 23
+    fd fd fd fd |  p  p  p  p |  b  b  b  b |  b  b  b  b |  n  n  n  n |  n  n  n  n
+
+    Most processors read memory 8 bytes and 4 byte for 32 bit systems for chunks. 
+
+    t_gnl_list	*lstfind(t_gnl_list *head, int fd);
+    t_gnl_list	*lstcreate(int fd);
+    t_gnl_list	*lstinsert(t_gnl_list **head, t_gnl_list *new_node);
+    void		lstremove(t_gnl_list **head, int fd);
+    char		*lstcombine(char *old_str, char *new_str);
+    int			find_newline(char *s);
+    size_t		ft_strlen(char *s);
+    void		ft_memcpy(char *dst, char *src, size_t n);
+    
+#endif -->
+
+เรียกครั้งแรกของ fd นี้ ? → lstfind หาไม่เจอ → สร้างใหม่ lstcreate + ต่อเข้า list lstinsert
