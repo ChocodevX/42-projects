@@ -1,80 +1,133 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ponsumri <chocodeveloper020@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/12 21:05:46 by ponsumri          #+#    #+#             */
+/*   Updated: 2026/09/12 21:06:18 by ponsumri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-char *get_next_line(int fd){
-    if (fd < 0 || BUFFER_SIZE <= 0){
-        return NULL;
-    }
+static t_gnl_list	*get_node(t_gnl_list **head, int fd)
+{
+	t_gnl_list	*node;
 
-    static t_gnl_list *head = NULL;
-    t_gnl_list *node;
-    char *line;
-    node = lstfind(head,fd);
-    if (node == NULL){
-        node = lstcreate(fd);
-        lstinsert(&head,node);
-    }
-    ssize_t read_counter;
-    char *dst = malloc((sizeof(char) * BUFFER_SIZE) + 1 );
-    if (!dst){
-        return NULL;
-    }
-    while(node->buf == NULL || ft_strchr(node->buf,'\n') == NULL){
-        read_counter = read(fd,dst,BUFFER_SIZE);
-        if (read_counter == 0)
-            break;
-
-        if (read_counter < 0)
-        {
-            free(dst);
-            return (NULL);
-        }
-
-        dst[read_counter] = '\0';
-        node->buf = lstcombine(node->buf, dst);
-    }
-
-    if (node->buf == NULL){
-        free(dst);
-        lstremove(&head,fd);
-        return NULL;
-    }
-
-    int nl_pos = find_newline(node->buf);
-    int nl_len;
-    if (nl_pos != -1){
-        nl_len = nl_pos + 1;
-    }else {
-        nl_len = ft_strlen(node->buf);
-    }
-    
-    line = malloc((nl_len) + 1);
-    if (line == NULL)
-    {
-        free(dst);
-        return (NULL);
-    }
-    ft_strlcpy(line, node->buf, nl_len + 1);
-
-    if (nl_pos != -1)
-    {
-        int remain_len = ft_strlen(node->buf) - nl_len;
-        char *remainder = malloc(remain_len + 1);
-        if (remainder != NULL)
-            ft_strlcpy(remainder, node->buf + nl_len, remain_len + 1);
-        free(node->buf);
-        node->buf = remainder;
-    }
-    else
-    {
-        free(node->buf);
-        node->buf = NULL;
-        lstremove(&head, fd);
-    }
-
-    free(dst);
-    return (line);
+	node = *head;
+	while (node != NULL)
+	{
+		if (node->fd == fd)
+			return (node);
+		node = node->next;
+	}
+	node = malloc(sizeof(t_gnl_list));
+	if (node == NULL)
+		return (NULL);
+	node->fd = fd;
+	node->buf = NULL;
+	node->next = *head;
+	*head = node;
+	return (node);
 }
 
-int main (){
+static void	free_node(t_gnl_list **head, int fd)
+{
+	t_gnl_list	*node;
+	t_gnl_list	*prev;
 
+	node = *head;
+	prev = NULL;
+	while (node != NULL)
+	{
+		if (node->fd == fd)
+		{
+			if (prev == NULL)
+				*head = node->next;
+			else
+				prev->next = node->next;
+			free(node->buf);
+			free(node);
+			return ;
+		}
+		prev = node;
+		node = node->next;
+	}
+}
+
+static int	fill_buffer(t_gnl_list *node, int fd)
+{
+	char	*dst;
+	ssize_t	r;
+
+	dst = malloc(BUFFER_SIZE + 1);
+	if (dst == NULL)
+		return (-1);
+	r = 1;
+	while (r > 0 && (node->buf == NULL || find_newline(node->buf) == -1))
+	{
+		r = read(fd, dst, BUFFER_SIZE);
+		if (r < 0)
+		{
+			free(dst);
+			return (-1);
+		}
+		if (r > 0)
+		{
+			dst[r] = '\0';
+			node->buf = lstcombine(node->buf, dst);
+		}
+	}
+	free(dst);
+	return (0);
+}
+
+static char	*build_line(t_gnl_list **head, t_gnl_list *node, int fd)
+{
+	char	*line;
+	char	*rem;
+	int		pos;
+	int		len;
+
+	pos = find_newline(node->buf);
+	len = pos + 1;
+	if (pos == -1)
+		len = ft_strlen(node->buf);
+	line = malloc(len + 1);
+	if (line == NULL)
+		return (NULL);
+	ft_strlcpy(line, node->buf, len + 1);
+	if (pos != -1 && ft_strlen(node->buf) - len > 0)
+	{
+		rem = malloc(ft_strlen(node->buf) - len + 1);
+		if (rem != NULL)
+			ft_strlcpy(rem, node->buf + len, ft_strlen(node->buf) - len + 1);
+		free(node->buf);
+		node->buf = rem;
+	}
+	else
+		free_node(head, fd);
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	static t_gnl_list	*head = NULL;
+	t_gnl_list			*node;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	node = get_node(&head, fd);
+	if (node == NULL)
+		return (NULL);
+	if (fill_buffer(node, fd) == -1)
+		return (NULL);
+	if (node->buf == NULL)
+	{
+		free_node(&head, fd);
+		return (NULL);
+	}
+	return (build_line(&head, node, fd));
 }
